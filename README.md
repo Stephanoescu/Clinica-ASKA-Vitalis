@@ -1,6 +1,6 @@
-# AuraMed - Clínica Virtual
+# Clínica ASKA Vitalis - Clínica Virtual
 
-AuraMed es una aplicación web Frontend de Telemedicina y Triaje Virtual. Está diseñada con una estética premium, minimalista y modo oscuro inspirado en Apple.
+Clínica ASKA Vitalis es una aplicación web Frontend de Telemedicina y Triaje Virtual. Está diseñada con una estética premium, minimalista y modo oscuro inspirado en Apple.
 
 ## Funcionalidades
 - **Triaje Virtual Simulado**: Chat interactivo para describir síntomas con respuestas automatizadas en JavaScript.
