@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraMed - Clínica Virtual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon">✦</span> AuraMed
+        </div>
+    </header>
+
+    <div class="layout">
+        <main class="main-content">
+            <section class="specialties-section">
+                <h2>Especialidades</h2>
+                <div class="specialties-grid" id="specialties-grid">
+                    <div class="card specialty-card active" data-specialty="Medicina General">
+                        <h3>Medicina General</h3>
+                        <p>Atención primaria y prevención</p>
+                    </div>
+                    <div class="card specialty-card" data-specialty="Cardiología">
+                        <h3>Cardiología</h3>
+                        <p>Corazón y sistema circulatorio</p>
+                    </div>
+                    <div class="card specialty-card" data-specialty="Pediatría">
+                        <h3>Pediatría</h3>
+                        <p>Atención médica para niños</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="triage-section card">
+                <div class="triage-header">
+                    <h2>Triaje Virtual</h2>
+                    <p class="subtitle">Atención actual: <span id="current-specialty" class="accent-text">Medicina General</span></p>
+                </div>
+                
+                <div class="chat-area" id="chat-area">
+                    <div class="message doctor-message">
+                        <div class="avatar">👨‍⚕️</div>
+                        <div class="bubble">Hola, soy tu doctor virtual. Por favor, describe tus síntomas con el mayor detalle posible.</div>
+                    </div>
+                </div>
+
+                <div class="input-area">
+                    <textarea id="symptom-input" placeholder="Escribe tus síntomas aquí..." rows="3"></textarea>
+                    <button id="send-btn" class="btn-primary">Enviar</button>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <div class="emergency-banner card">
+                <div class="banner-icon">⚠️</div>
+                <h3>¿Emergencia?</h3>
+                <p>¿Te sientes muy mal o tienes dolores fuertes?</p>
+                <button id="open-modal-btn" class="btn-outline-accent">Saca tu cita aquí</button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modal Cita Presencial -->
+    <div id="appointment-modal" class="modal-overlay">
+        <div class="modal-content card">
+            <button class="close-btn" id="close-modal-btn">&times;</button>
+            
+            <!-- Vista de Formulario -->
+            <div id="modal-form-view">
+                <h2>Cita Presencial Urgente</h2>
+                <p>Por favor, ingresa tus datos para priorizar tu atención en nuestra clínica.</p>
+                <form id="appointment-form">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" placeholder="Ej. Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono de contacto</label>
+                        <input type="tel" id="phone" placeholder="Tu número" required>
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Confirmar Cita</button>
+                </form>
+            </div>
+
+            <!-- Vista de Éxito -->
+            <div id="modal-success-view" style="display: none; text-align: center; padding: 20px 0;">
+                <div style="font-size: 48px; margin-bottom: 16px;">✅</div>
+                <h2>¡Cita Registrada!</h2>
+                <p style="margin-bottom: 24px;">Tu solicitud ha sido recibida. Nos pondremos en contacto contigo en breve para confirmar el horario.</p>
+                <button id="close-success-btn" class="btn-primary full-width">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
