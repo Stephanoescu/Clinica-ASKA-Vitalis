@@ -20,6 +20,60 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSpecialty = 'Medicina General';
     let isTyping = false;
 
+    // Carousel Logic
+    let slideIndex = 1;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    let slideTimer;
+
+    const showSlides = (n) => {
+        if (!slides.length) return;
+        
+        if (n > slides.length) { slideIndex = 1; }
+        if (n < 1) { slideIndex = slides.length; }
+        
+        slides.forEach(slide => slide.style.display = "none");
+        dots.forEach(dot => dot.classList.remove("active"));
+        
+        slides[slideIndex - 1].style.display = "block";
+        if (dots.length > 0) dots[slideIndex - 1].classList.add("active");
+    };
+
+    const plusSlides = (n) => {
+        clearTimeout(slideTimer);
+        showSlides(slideIndex += n);
+        startAutoSlide();
+    };
+
+    const currentSlide = (n) => {
+        clearTimeout(slideTimer);
+        showSlides(slideIndex = n);
+        startAutoSlide();
+    };
+
+    const startAutoSlide = () => {
+        slideTimer = setTimeout(() => {
+            slideIndex++;
+            showSlides(slideIndex);
+            startAutoSlide();
+        }, 5000); // 5 seconds
+    };
+
+    if (slides.length > 0) {
+        showSlides(slideIndex);
+        startAutoSlide();
+
+        const prevBtn = document.getElementById('carousel-prev');
+        const nextBtn = document.getElementById('carousel-next');
+
+        if(prevBtn) prevBtn.addEventListener('click', () => plusSlides(-1));
+        if(nextBtn) nextBtn.addEventListener('click', () => plusSlides(1));
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => currentSlide(index + 1));
+        });
+    }
+
     // Specialty Selection
     specialtyCards.forEach(card => {
         card.addEventListener('click', () => {
